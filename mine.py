@@ -13,6 +13,7 @@ class Mine:
                  grid_energy_price=cs.COST_PER_kWh / 1e3,  # price is now per Wh
                  maas_source=energy.WindOnshore
     ):
+        self.name = name
         self.base_load = base_load
         self.grid_source = grid_source
         self.grid_energy_price = grid_energy_price

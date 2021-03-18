@@ -4,6 +4,7 @@ import mine
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 
 mine = mine.Mine("HVC", 200e6)
+print(mine.name)
 print(mine.get_annual_energy_cost())
 print(mine.get_annual_grid_co2_tonnage())
 print(mine.get_emissions_social_cost())
