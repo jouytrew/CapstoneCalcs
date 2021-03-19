@@ -12,12 +12,32 @@ class Mine:
                  grid_source=energy.Coal,
                  grid_energy_price=cs.COST_PER_kWh / 1e3,  # price is now per Wh
                  maas_source=energy.WindOnshore
-    ):
+                 ):
         self.name = name
         self.base_load = base_load
         self.grid_source = grid_source
         self.grid_energy_price = grid_energy_price
         self.maas_source = maas_source
+        # Then run some calcs for how the MaaS is to be set up - probably depends on maas source's intermittency
+        self.model_maas_system()
+
+    """
+    :return the yearly revenue (probably in terms money saved from generating electricity)
+    """
+    def get_yr_savings(self):
+        pass
+
+    """
+    :return the yearly operating costs
+    """
+    def get_yr_op_costs(self):
+        pass
+
+    """
+    :returns the Operating Cash Delta = savings - costs
+    """
+    def get_yr_ocd(self):
+        return self.get_yr_savings() - self.get_yr_op_costs()
 
     """
     :returns the number of Watt-hours needed per year to satisfy operations, from the base_load
@@ -40,3 +60,7 @@ class Mine:
 
     def get_emissions_social_cost(self):
         return self.get_annual_grid_co2_tonnage() * cs.CARBON_OFFSET_SOCIAL_COST
+
+    def model_maas_system(self):
+        pass
+

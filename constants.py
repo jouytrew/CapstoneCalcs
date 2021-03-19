@@ -2,7 +2,7 @@
 Constants for the calculations
 """
 
-DISCOUNT_RATE = 0.10  # % annually
+DISCOUNT_RATE = 0.10  # * 100% annually
 
 J_PER_Wh = 3.6e3  # 3600 Joules / Watt-hour
 CARBON_OFFSET_SOCIAL_COST = 50   # $/ton - https://www.edf.org/true-cost-carbon-pollution

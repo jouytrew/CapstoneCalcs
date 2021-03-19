@@ -1,14 +1,26 @@
 import constants as cs
 """
-Energy CO2 emissions, in gCo2 equiv/kWh, data from 2014
+INTERMITTENCY defaults to no intermittency, this number should range between 0-1, 
+0 means a constant source of energy, 0.5 means it outputs (max) energy 50% of the time
+
+MIN/MED/MAX are Energy CO2 emissions, in gCo2 equiv/kWh, data from 2014
 https://en.wikipedia.org/wiki/Life-cycle_greenhouse_gas_emissions_of_energy_sources
 """
 
 
 class EnergySource:
+    #  IS_INTERMITTENT = False  # is the energy source intermittent? If it is, then what is the intermittency?
+    INTERMITTENCY = 0
+
     MIN = 0
     MED = 300
     MAX = 600
+
+    """
+    If INTERMITTENCY is not 0, return true. 
+    """
+    def is_intermittent(self):
+        return self.INTERMITTENCY != 0
 
 
 class Coal(EnergySource):
@@ -29,16 +41,16 @@ class Biomass(EnergySource):
     MAX = 420
 
 
-"""
-Utility Grade Solar
-"""
+# Utility Grade Solar
 class SolarUtility(EnergySource):
+    IS_INTERMITTENT = 0.5
     MIN = 18
     MED = 48
     MAX = 180
 
 
 class SolarConcentrated(EnergySource):
+    INTERMITTENCY = 0.5
     MIN = 8.8
     MED = 27
     MAX = 63
@@ -57,12 +69,14 @@ class Hydro(EnergySource):
 
 
 class WindOnshore(EnergySource):
+    INTERMITTENCY = 0.4
     MIN = 7
     MED = 11
     MAX = 56
 
 
 class WindOffshore(EnergySource):
+    INTERMITTENCY = True
     MIN = 8
     MED = 12
     MAX = 35
