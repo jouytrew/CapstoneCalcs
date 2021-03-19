@@ -6,6 +6,8 @@ Creating a mine
 
 
 class Mine:
+    maas_load = 0
+
     def __init__(self,
                  name,  # for identification purposes
                  base_load,  # in Watts
@@ -62,5 +64,5 @@ class Mine:
         return self.get_annual_grid_co2_tonnage() * cs.CARBON_OFFSET_SOCIAL_COST
 
     def model_maas_system(self):
-        pass
+        self.maas_load = (1 - self.maas_source.INTERMITTENCY) * self.base_load
 

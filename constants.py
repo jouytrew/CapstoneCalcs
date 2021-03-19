@@ -14,3 +14,5 @@ DAYS_OP_PER_YEAR = 350  # days of operation per year
 HOURS_PER_DAY = 24
 
 COST_PER_kWh = 0.10  # $/kWh
+BATTERY_COST_PER_kWh = 250  # link below
+# https://www.greencarreports.com/news/1112800_teslas-solar-and-battery-project-in-hawaii-we-do-the-math
